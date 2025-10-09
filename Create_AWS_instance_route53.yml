@@ -1,8 +1,8 @@
 - name: "create ec2 instance and route53"
   hosts: local
   vars:
-   ami-id: ami-09c813fb71547fc4f
-   sg_id: sg-0269c42f363b9217b
+   ami-id: "ami-09c813fb71547fc4f"
+   sg_id: "sg-0269c42f363b9217b"
    hosting_zone: Z02845132921NLJI9M7EG
    domain_name: devsecops86s.space
   tasks:
