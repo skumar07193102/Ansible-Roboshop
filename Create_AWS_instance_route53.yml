@@ -17,7 +17,7 @@
     loop:
     - mongodb
     - catalogue
-    register: ec2-output
+    register: ec2_output
   - name: print the ec2 instance output
     ansible.builtin.debug:
-      msg: " instance ID is : {{ ec2-output }}"
+      msg: " instance ID is : {{ ec2_output }}"
