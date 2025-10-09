@@ -30,7 +30,7 @@
       record_name: "{{ item.item }}.{{ domain_name }}"
       type: A
       ttl: 1
-      value: "{{ item.network_interfaces[0].private_ip_address }}"
+      value: "{{ item.network_interfaces.private_ip_address }}"
       overwrite: true
     loop: "{{ ec2_output.results }}"
 
