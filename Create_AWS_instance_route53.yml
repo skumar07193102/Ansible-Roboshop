@@ -34,7 +34,7 @@
       value: "{{ item.instances[0].private_ip_address }}"
       overwrite: true
     loop: "{{ ec2_output.results }}"
-    regiser: record_output
+    regitser: record_output
   - name: print the record output
     ansible.builtin.debug:
       msg: "{{ item }}"
