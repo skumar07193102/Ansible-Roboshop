@@ -38,7 +38,8 @@
     register: route53_output
   - name: print the record output
     ansible.builtin.debug:
-      msg: "{{ route53_output.results.record }}"
+      msg: "{{ item.name }}"
+    loop: "{{ route53_output.results }}"
 
   - name: route53 record creation for frontend
     amazon.aws.route53:
@@ -52,9 +53,10 @@
     when: item.item == "frontend"
     loop: "{{ ec2_output.results }}"
     register: route53_output
-  - name: print the record output
+  - name: print the frontendrecord output
     ansible.builtin.debug:
-      msg: " {{ route53_output.results.record }} "
+        msg: "{{ item.name }}"
+    loop: "{{ route53_output.results }}"
 
 
 
