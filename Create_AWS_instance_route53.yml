@@ -38,7 +38,7 @@
     register: route53_output
   - name: print the record output
     ansible.builtin.debug:
-      msg: "{{ route53_output | to_json }}"
+      msg: "{{ route53_output.resource_records_sets.name }}"
 
   - name: route53 record creation for frontend
     amazon.aws.route53:
@@ -54,7 +54,7 @@
     register: route53_output
   - name: print the record output
     ansible.builtin.debug:
-      msg: " {{ route53_output | to_json }} "
+      msg: " {{ route53_output.resource_records_sets.name }} "
 
 
 
