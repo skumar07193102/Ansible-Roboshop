@@ -18,6 +18,7 @@
     loop:
     - mongodb
     - catalogue
+    - frontend
     register: ec2_output
   - name: print the ec2 instance output
     ansible.builtin.debug:
@@ -51,10 +52,10 @@
       overwrite: true
     when: item.item == "frontend"
     loop: "{{ ec2_output.results }}"
-    register: record_output
+    register: frontend_record_output
   - name: print the record output
     ansible.builtin.debug:
       msg: "{{ item }}"
-    loop: "{{ record_output}}"
+    loop: "{{ rontend_record_output}}"
 
 
