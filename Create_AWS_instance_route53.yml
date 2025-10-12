@@ -51,9 +51,10 @@
       overwrite: true
     when: item.item == "frontend"
     loop: "{{ ec2_output.results }}"
+    register: route53_output
   - name: print the record output
     ansible.builtin.debug:
-      msg: " {{ record }} : {{ value }} "
+      msg: " {{ route53_output }} "
 
 
 
