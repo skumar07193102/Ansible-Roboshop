@@ -35,9 +35,10 @@
       value: "{{ item.instances[0].private_ip_address }}"
       overwrite: true
     loop: "{{ ec2_output.results }}"
+    register: route53_output
   - name: print the record output
     ansible.builtin.debug:
-      msg: "{{ record }} : {{ value }}"
+      msg: "{{ route53_output}}"
 
   - name: route53 record creation for frontend
     amazon.aws.route53:
