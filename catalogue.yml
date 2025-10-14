@@ -5,10 +5,11 @@
   - name: install the nodejs 20v package
     ansible.builtin.command: dnf module install nodejs:20 -y
   - name: create the roboshop system user
+    vars:
+      username: roboshop
     ansible.builtin.user:
       name: roboshop
       comment: creation of system user
       shell: /sbin/nologin
       home: /app
-    register: user_output
-    when: user_output.name != roboshop
+    when: username != roboshop
