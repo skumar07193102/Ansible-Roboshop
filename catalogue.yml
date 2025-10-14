@@ -10,4 +10,4 @@
       comment: creation of system user
       shell: /sbin/nologin
       home: /app
-    when: user.name != roboshop
+    when: name != roboshop
