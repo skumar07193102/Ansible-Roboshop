@@ -3,7 +3,7 @@
   connection: local
   vars:
    ami_id: "ami-09c813fb71547fc4f"
-   sg_id: "sg-0269c42f363b9217b"
+   sg_id: "sg-02a575ca32ec8ed6b"
    hosting_zone: Z02845132921NLJI9M7EG
    domain_name: "devsecops86s.space"
    instances:
