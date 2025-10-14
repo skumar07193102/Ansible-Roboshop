@@ -22,7 +22,7 @@
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
   - name: start service
-    anisble.builtin.service:
+    ansible.builtin.service:
       name: nginx
       status: started
       enabled: yes
