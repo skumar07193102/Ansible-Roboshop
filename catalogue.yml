@@ -40,11 +40,11 @@
       state: present
   - name: evaluate the catalog in DB
     ansible.builtin.command: mongosh mongodb.devsecops86s.space --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
-    register: catalog_output
+    register: catalogue_output
 
   - name: load the catalog products to mongo Db if there is product data
     ansible.builtin.shell: mongosh --host mongodb.devsecops86s.space </app/db/master-data.js
-    when: catalog_output.stdout | int < 0
+    when: catalogue_output.stdout | int < 0
 
   - name: catalogue service daemon-reload, start and enable
     ansible.builtin.systemd_service:
