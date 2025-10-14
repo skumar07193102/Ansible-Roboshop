@@ -6,6 +6,14 @@
    sg_id: "sg-0269c42f363b9217b"
    hosting_zone: Z02845132921NLJI9M7EG
    domain_name: "devsecops86s.space"
+   instances:
+   - redis
+   - mysql
+   - shipping
+   - payment
+   - user
+   - cart
+   - rabbitmq
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
@@ -15,10 +23,7 @@
      image_id: "{{ ami_id }}"
      tags:
       name: "{{ item }}"
-    loop:
-    - mongodb
-    - catalogue
-    - frontend
+    loop: "{{ instances }}"
     register: ec2_output
   - name: print the ec2 instance output
     ansible.builtin.debug:
