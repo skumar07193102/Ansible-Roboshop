@@ -41,6 +41,9 @@
   - name: evaluate the catalog in DB
     ansible.builtin.command: mongosh mongodb.devsecops86s.space --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output
+  - name: print the catalogue_output
+    ansible.builtin.debug:
+      msg: "{{ catalogue_output }}"
 
   - name: load the catalog products to mongo Db if there is product data
     ansible.builtin.shell: mongosh --host mongodb.devsecops86s.space </app/db/master-data.js
