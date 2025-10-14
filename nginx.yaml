@@ -9,7 +9,7 @@
       path: /usr/share/nginx/html/* 
       state: absent
   - name: download the frontend code
-    ansible:builtin.get_url:
+    ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
       dest: /tmp/frontend.zip
   - name: Extract the file unser /tmp/frontend.zip to /usr/share/nginx/html/* 
