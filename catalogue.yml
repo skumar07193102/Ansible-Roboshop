@@ -43,5 +43,5 @@
       name: catalogue
       daemon_reload: true
       state: started
-      enables: yes
+      enabled: yes
 
