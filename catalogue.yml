@@ -1,5 +1,5 @@
 - name: configure the catalogue server
-  hosts: local
+  hosts: catalogue
   become: yes
   tasks:
   - name: install the nodejs 20v package
@@ -10,3 +10,38 @@
       comment: creation of system user
       shell: /sbin/nologin
       home: /app
+  - name: create the /app directory
+    ansible.builtin.file:
+      path: /app
+      state: directory
+  - name: downlaod the code to /tmp/catalogue.zip file
+    ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+      dest: /tmp/catalogue.zip
+  - name: extract the files from /tmp/cataologue.zip to /app
+    ansible.builtin.unarchive:
+      src: /tmp/catalogue.zip
+      dest: /app
+      remote_src: yes
+  - name: install npm dependencies
+    community.general.npm:
+      path : /app
+  - name: copy the catalogue.service to /etc/systemd/system
+    ansible.builtin.copy:
+      src: catalogue.service
+      dest: /etc/systemd/system/catalogue.service
+  - name: copy the mongo.repo to /etc/yum.repos.d/mongo.repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+  - name: install mongosh client
+    ansible.builtin.package:
+      name: mongodb-mongosh
+      state: present
+  - name: catalogue service daemon-reload, start and enable
+    ansible.builtin.systemd_service:
+      name: catalogue
+      daemon_reload: true
+      state: started
+      enables: yes
+
