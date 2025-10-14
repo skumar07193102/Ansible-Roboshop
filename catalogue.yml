@@ -39,8 +39,9 @@
       name: mongodb-mongosh
       state: present
   - name: evaluate the catalog in DB
-    ansible.builtin.command: mongosh mongodb.devsecops86s.space --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+    ansible.builtin.command: mongosh --host mongodb.devsecops86s.space --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output
+    
   - name: print the catalogue_output
     ansible.builtin.debug:
       msg: "{{ catalogue_output }}"
