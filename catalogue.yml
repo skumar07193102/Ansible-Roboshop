@@ -10,5 +10,3 @@
       comment: creation of system user
       shell: /sbin/nologin
       home: /app
-    register: user.results
-    when: user.results.name != roboshop
