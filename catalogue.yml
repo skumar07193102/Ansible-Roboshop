@@ -1,0 +1,16 @@
+- name: configure the catalogue server
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: install the nodejs 20v package
+    anisble.builtin.command: dnf module install nodejs:20
+  - name: create the robotshop system user
+    ansible.builtin.user:
+      name: roboshop
+      comment: creation of system user
+      shell: /sbin/nologin
+      home: /app
+    register: user_output
+  - name: Show the user output
+    ansible.builtin.debug:
+      msg: " {{ user_output }}"
