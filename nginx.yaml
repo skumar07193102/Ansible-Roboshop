@@ -21,6 +21,10 @@
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html/
       remote_src: yes
+  - name: delete the existing nginx file
+    ansible.builtin.file:
+      path: /etc/nginx/nginx.conf
+      state: absent
   - name: Copy the nginx.conf to the /etc/nginx/nginx.conf
     ansible.builtin.copy:
       src: nginx.conf
