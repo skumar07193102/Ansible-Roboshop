@@ -3,7 +3,7 @@
   become: yes
   tasks:
   - name: install nodejs
-    ansible.builtin.command: dnf install nodejs:20 -y
+    ansible.builtin.command: dnf module install nodejs:20 -y
   - name: create system user
     ansible.builtin.user:
       name: roboshop
