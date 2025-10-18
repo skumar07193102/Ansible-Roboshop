@@ -4,7 +4,7 @@
   tasks:
   - name: install the nodejs:20 package
     ansible.builtin.package:
-      name: nodejs-v20.19.2
+      name: nodejs-v20
       state: present
   - name: create the system user roboshop
     ansible.builtin.user:
