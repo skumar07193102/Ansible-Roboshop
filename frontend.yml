@@ -30,7 +30,7 @@
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
   - name: check the nginx conf is correct
-    ansible.builtin.commnad: nginx -t
+    ansible.builtin.command: nginx -t
   - name: start service
     ansible.builtin.service:
       name: nginx
