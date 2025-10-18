@@ -3,7 +3,7 @@
   become: yes
   tasks:
   - name: install the nodejs:20 package
-    ansible.biutlin.package:
+    ansible.builtin.package:
       name: nodejs-v20.19.2
       state: present
   - name: create the system user roboshop
