@@ -35,7 +35,7 @@
     community.general.npm:
       path: /app
   - name: copy the cart.service to systemd path
-    ansible.buitlin.copy:
+    ansible.builtin.copy:
       src: cart.service
       dest: /etc/systemd/system/cart.service
   - name: reload and start the service
