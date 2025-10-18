@@ -8,6 +8,7 @@
     ansible.builtin.user:
       name: roboshop
       comment: creation of system user
+      system: true
       shell: /sbin/nologin
       home: /app
   - name: create the /app directory
@@ -41,7 +42,7 @@
   - name: evaluate the catalog in DB
     ansible.builtin.command: mongosh --host mongodb.devsecops86s.space --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output
-    
+
   - name: print the catalogue_output
     ansible.builtin.debug:
       msg: "{{ catalogue_output }}"

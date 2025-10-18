@@ -8,6 +8,7 @@
     ansible.builtin.user:
       name: roboshop
       comment: " create system user"
+      system: true
       shell: /sbin/nologin
       home: /app
   - name: remove the existing /app directory
