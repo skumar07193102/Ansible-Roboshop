@@ -1,4 +1,4 @@
-- name: nginx setup in the server
+- name: setup frontend module
   hosts: devsecops86s.space
   become: yes
   tasks:
@@ -29,9 +29,11 @@
     ansible.builtin.copy:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
+  - name: check the nginx conf is correct
+    ansible.builtin.commnad: nginx -t
   - name: start service
     ansible.builtin.service:
       name: nginx
-      state: started
       enabled: yes
+      state: started
   
