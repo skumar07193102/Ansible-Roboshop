@@ -24,7 +24,7 @@
       state: absent
   - name: Download the user.zip code to /tmp
     ansible.builtin.get_url:
-      url: /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
+      url: "https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip"
       dest: /tmp/user.zip
   - name: Unarchive the user.zip to /app folder
     ansible.builtin.unarchive:
